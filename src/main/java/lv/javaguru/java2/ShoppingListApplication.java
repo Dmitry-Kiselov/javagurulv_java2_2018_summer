@@ -1,7 +1,7 @@
 package lv.javaguru.java2;
 
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.InMemoryDatabase;
+import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.servises.AddProductService;
 import lv.javaguru.java2.servises.PrintProductService;
 import lv.javaguru.java2.servises.RemoveProductService;
@@ -24,7 +24,7 @@ public class ShoppingListApplication {
         // 3. Print shopping list to console
         // 4. Exit
 
-        Database database = new InMemoryDatabase();
+        Database database = new JDBCDatabaseImpl();
         AddProductService addProductService = new AddProductService(database);
         RemoveProductService removeProductService = new RemoveProductService(database);
         PrintProductService printProductService = new PrintProductService(database);
@@ -32,7 +32,6 @@ public class ShoppingListApplication {
         AddProductView addProductView = new AddProductView(addProductService);
         RemoveProductView removeProductView = new RemoveProductView(removeProductService);
         PrintProductListView printProductListView = new PrintProductListView(printProductService);
-
 
         Map<Integer, ConsoleView> menuMap = new HashMap<>();
         menuMap.put(1, addProductView);
