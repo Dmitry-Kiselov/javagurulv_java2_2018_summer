@@ -1,4 +1,10 @@
 Business rules:
+
+1) Do not allow blank titles
+2) Do not allow blank descriptions
+3) Do not allow product duplication in a list
+
+
 1. Not to add duplicate products to list
 2. Add product quantity
 3. Introduce product importance in the list

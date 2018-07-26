@@ -4,6 +4,8 @@ import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.servises.AddProductService;
 import lv.javaguru.java2.servises.PrintProductService;
+import lv.javaguru.java2.servises.ProductValidator;
+import lv.javaguru.java2.servises.ProductValidatorImpl;
 import lv.javaguru.java2.servises.RemoveProductService;
 import lv.javaguru.java2.views.AddProductView;
 import lv.javaguru.java2.views.ConsoleView;
@@ -25,7 +27,10 @@ public class ShoppingListApplication {
         // 4. Exit
 
         Database database = new JDBCDatabaseImpl();
-        AddProductService addProductService = new AddProductService(database);
+
+        ProductValidator productValidator = new ProductValidatorImpl(database);
+
+        AddProductService addProductService = new AddProductService(productValidator, database);
         RemoveProductService removeProductService = new RemoveProductService(database);
         PrintProductService printProductService = new PrintProductService(database);
 
