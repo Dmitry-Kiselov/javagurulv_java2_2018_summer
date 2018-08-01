@@ -1,17 +1,13 @@
 package lv.javaguru.java2;
 
-import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.JDBCDatabaseImpl;
-import lv.javaguru.java2.servises.AddProductService;
-import lv.javaguru.java2.servises.PrintProductService;
-import lv.javaguru.java2.servises.ProductValidator;
-import lv.javaguru.java2.servises.ProductValidatorImpl;
-import lv.javaguru.java2.servises.RemoveProductService;
+import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.views.AddProductView;
 import lv.javaguru.java2.views.ConsoleView;
 import lv.javaguru.java2.views.ExitView;
 import lv.javaguru.java2.views.PrintProductListView;
 import lv.javaguru.java2.views.RemoveProductView;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,22 +22,13 @@ public class ShoppingListApplication {
         // 3. Print shopping list to console
         // 4. Exit
 
-        Database database = new JDBCDatabaseImpl();
-
-        ProductValidator productValidator = new ProductValidatorImpl(database);
-
-        AddProductService addProductService = new AddProductService(productValidator, database);
-        RemoveProductService removeProductService = new RemoveProductService(database);
-        PrintProductService printProductService = new PrintProductService(database);
-
-        AddProductView addProductView = new AddProductView(addProductService);
-        RemoveProductView removeProductView = new RemoveProductView(removeProductService);
-        PrintProductListView printProductListView = new PrintProductListView(printProductService);
+        ApplicationContext context
+                = new AnnotationConfigApplicationContext(SpringAppConfig.class);
 
         Map<Integer, ConsoleView> menuMap = new HashMap<>();
-        menuMap.put(1, addProductView);
-        menuMap.put(2, removeProductView);
-        menuMap.put(3, printProductListView);
+        menuMap.put(1, context.getBean(AddProductView.class));
+        menuMap.put(2, context.getBean(RemoveProductView.class));
+        menuMap.put(3, context.getBean(PrintProductListView.class));
         menuMap.put(4, new ExitView());
 
         while (true) {

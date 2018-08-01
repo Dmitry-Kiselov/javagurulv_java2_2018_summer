@@ -1,9 +1,12 @@
 package lv.javaguru.java2.servises;
 
 import lv.javaguru.java2.database.Database;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,19 +14,14 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AddProductServiceTest {
 
-    private ProductValidator validator;
-    private Database database;
+    @Mock private ProductValidator validator;
+    @Mock private Database database;
 
-    private AddProductService service;
-
-    @Before
-    public void init() {
-        validator = Mockito.mock(ProductValidator.class);
-        database = Mockito.mock(Database.class);
-        service = new AddProductService(validator, database);
-    }
+    @InjectMocks
+    private AddProductService service = new AddProductService();
 
     @Test
     public void shouldReturnFailedResponseWhenValidationErrorsExist() {

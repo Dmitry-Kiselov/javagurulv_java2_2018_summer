@@ -1,9 +1,11 @@
 package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.servises.RemoveProductService;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class RemoveProductView implements ConsoleView {
 
     private RemoveProductService removeProductService;

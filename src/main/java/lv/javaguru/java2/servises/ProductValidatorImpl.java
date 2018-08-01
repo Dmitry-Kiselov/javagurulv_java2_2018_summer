@@ -2,11 +2,13 @@ package lv.javaguru.java2.servises;
 
 import lv.javaguru.java2.database.Database;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ProductValidatorImpl implements ProductValidator {
 
     private Database database;

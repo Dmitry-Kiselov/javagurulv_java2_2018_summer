@@ -2,9 +2,11 @@ package lv.javaguru.java2.views;
 
 import lv.javaguru.java2.servises.PrintProductService;
 import lv.javaguru.java2.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class PrintProductListView implements ConsoleView {
 
     private PrintProductService printProductService;
