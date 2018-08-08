@@ -1,17 +1,33 @@
 package lv.javaguru.java2.servises;
 
+import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.database.Database;
-import lv.javaguru.java2.database.JDBCDatabaseImpl;
 import lv.javaguru.java2.domain.Product;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { SpringAppConfig.class })
 public class DatabaseIntegrationTest {
 
-    private Database database = new JDBCDatabaseImpl();
+    @Autowired
+    private Database database;
+
+/*
+    @Before
+    public void init() {
+        ApplicationContext context
+                = new AnnotationConfigApplicationContext(SpringAppConfig.class);
+        this.database = context.getBean(Database.class);
+    }
+*/
 
     @Test
     public void shouldAddProduct() {

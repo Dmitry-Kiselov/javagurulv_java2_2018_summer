@@ -1,7 +1,6 @@
 package lv.javaguru.java2.database;
 
 import lv.javaguru.java2.domain.Product;
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+//@Component
 public class JDBCDatabaseImpl extends JDBCRepository
                               implements Database {
 
@@ -72,10 +71,14 @@ public class JDBCDatabaseImpl extends JDBCRepository
         Connection connection = null;
         try {
             connection = getConnection();
+            connection.setAutoCommit(false);
+
             String sql = "delete from PRODUCTS where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1, product.getId());
             preparedStatement.executeUpdate();
+
+            connection.commit();
 
             // TODO how to get deleted record count from result set?
             return true;
