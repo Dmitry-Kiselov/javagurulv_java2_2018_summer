@@ -1,4 +1,4 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.jdbc;
 
 import java.io.IOException;
 import java.sql.Connection;

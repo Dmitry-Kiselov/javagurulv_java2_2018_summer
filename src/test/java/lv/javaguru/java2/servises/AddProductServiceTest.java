@@ -1,6 +1,6 @@
 package lv.javaguru.java2.servises;
 
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.ProductRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class AddProductServiceTest {
 
     @Mock private ProductValidator validator;
-    @Mock private Database database;
+    @Mock private ProductRepository database;
 
     @InjectMocks
     private AddProductService service = new AddProductService();

@@ -1,10 +1,8 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.orm;
 
+import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,15 +11,8 @@ import java.util.Optional;
 
 @Component
 @Transactional
-public class ORMDatabaseImpl implements Database {
-
-    @Autowired
-    private SessionFactory sessionFactory;
-
-
-    private Session session() {
-        return sessionFactory.getCurrentSession();
-    }
+public class ProductRepositoryImpl extends ORMRepository
+                                   implements ProductRepository {
 
     @Override
     public void addProduct(Product product) {

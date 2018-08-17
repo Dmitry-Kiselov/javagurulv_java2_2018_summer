@@ -1,12 +1,14 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.inmemory;
 
+import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class InMemoryDatabase implements Database {
+//@Component
+class ProductRepositoryImpl implements ProductRepository {
 
     private List<Product> products = new ArrayList<>();
 

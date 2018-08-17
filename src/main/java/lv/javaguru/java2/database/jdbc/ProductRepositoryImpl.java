@@ -1,5 +1,6 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.jdbc;
 
+import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
 
 import java.sql.Connection;
@@ -10,9 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 //@Component
-public class JDBCDatabaseImpl extends JDBCRepository
-                              implements Database {
-
+public class ProductRepositoryImpl extends JDBCRepository
+                                   implements ProductRepository {
 
     @Override
     public void addProduct(Product product) {

@@ -1,6 +1,6 @@
 package lv.javaguru.java2.servises;
 
-import lv.javaguru.java2.database.Database;
+import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.List;
 public class AddProductService {
 
     @Autowired private ProductValidator validator;
-    @Autowired private Database database;
+    @Autowired private ProductRepository database;
 
     public AddProductResponse addProduct(String title,
                                          String description) {
