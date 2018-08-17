@@ -11,7 +11,7 @@ import java.util.List;
 public class AddProductService {
 
     @Autowired private ProductValidator validator;
-    @Autowired private ProductRepository database;
+    @Autowired private ProductRepository repository;
 
     public AddProductResponse addProduct(String title,
                                          String description) {
@@ -24,7 +24,7 @@ public class AddProductService {
         product.setTitle(title);
         product.setDescription(description);
 
-        database.addProduct(product);
+        repository.addProduct(product);
 
         return new AddProductResponse(product.getId());
     }

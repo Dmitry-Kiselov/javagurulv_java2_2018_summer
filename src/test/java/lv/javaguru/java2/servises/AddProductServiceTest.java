@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class AddProductServiceTest {
 
     @Mock private ProductValidator validator;
-    @Mock private ProductRepository database;
+    @Mock private ProductRepository repository;
 
     @InjectMocks
     private AddProductService service = new AddProductService();
