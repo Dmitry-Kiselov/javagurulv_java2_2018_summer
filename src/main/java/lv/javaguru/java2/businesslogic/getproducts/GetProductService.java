@@ -1,4 +1,4 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic.getproducts;
 
 import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class PrintProductService {
+public class GetProductService {
 
     private ProductRepository database;
 
-    public PrintProductService(ProductRepository database) {
+    public GetProductService(ProductRepository database) {
         this.database = database;
     }
 

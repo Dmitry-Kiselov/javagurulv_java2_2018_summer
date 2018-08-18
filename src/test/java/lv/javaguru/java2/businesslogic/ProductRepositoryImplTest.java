@@ -1,4 +1,4 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.config.SpringAppConfig;
 import lv.javaguru.java2.database.ProductRepository;

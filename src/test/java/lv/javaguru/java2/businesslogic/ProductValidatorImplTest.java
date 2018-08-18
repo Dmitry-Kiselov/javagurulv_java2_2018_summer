@@ -1,7 +1,9 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
+import lv.javaguru.java2.businesslogic.addproduct.AddProductValidator;
+import lv.javaguru.java2.businesslogic.addproduct.AddProductValidatorImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -14,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 public class ProductValidatorImplTest {
 
     private ProductRepository database;
-    private ProductValidator validator;
+    private AddProductValidator validator;
 
     @Before
     public void init() {
         database = Mockito.mock(ProductRepository.class);
-        validator = new ProductValidatorImpl(database);
+        validator = new AddProductValidatorImpl(database);
     }
 
     @Test

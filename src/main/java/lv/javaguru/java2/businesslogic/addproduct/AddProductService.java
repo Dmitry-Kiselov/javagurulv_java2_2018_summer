@@ -1,18 +1,21 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic.addproduct;
 
 import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
+import lv.javaguru.java2.businesslogic.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
 public class AddProductService {
 
-    @Autowired private ProductValidator validator;
+    @Autowired private AddProductValidator validator;
     @Autowired private ProductRepository repository;
 
+    @Transactional
     public AddProductResponse addProduct(String title,
                                          String description) {
         List<Error> validationErrors = validator.validate(title, description);

@@ -1,6 +1,9 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic;
 
 import lv.javaguru.java2.database.ProductRepository;
+import lv.javaguru.java2.businesslogic.addproduct.AddProductResponse;
+import lv.javaguru.java2.businesslogic.addproduct.AddProductService;
+import lv.javaguru.java2.businesslogic.addproduct.AddProductValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -17,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class AddProductServiceTest {
 
-    @Mock private ProductValidator validator;
+    @Mock private AddProductValidator validator;
     @Mock private ProductRepository repository;
 
     @InjectMocks

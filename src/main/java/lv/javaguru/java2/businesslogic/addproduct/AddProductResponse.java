@@ -1,4 +1,6 @@
-package lv.javaguru.java2.servises;
+package lv.javaguru.java2.businesslogic.addproduct;
+
+import lv.javaguru.java2.businesslogic.Error;
 
 import java.util.List;
 
