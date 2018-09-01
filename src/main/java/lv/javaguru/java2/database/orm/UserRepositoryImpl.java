@@ -38,4 +38,12 @@ class UserRepositoryImpl extends ORMRepository
         return Optional.ofNullable(user);
     }
 
+    @Override
+    public Optional<User> findById(Long userId) {
+        User user = (User) session().createCriteria(User.class)
+                .add(Restrictions.eq("id", userId))
+                .uniqueResult();
+        return Optional.ofNullable(user);
+    }
+
 }

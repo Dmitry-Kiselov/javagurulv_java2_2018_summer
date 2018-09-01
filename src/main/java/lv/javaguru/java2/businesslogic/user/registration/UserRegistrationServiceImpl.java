@@ -1,6 +1,7 @@
-package lv.javaguru.java2.businesslogic.userregistration;
+package lv.javaguru.java2.businesslogic.user.registration;
 
-import lv.javaguru.java2.businesslogic.Error;
+import lv.javaguru.java2.businesslogic.ApplicationException;
+import lv.javaguru.java2.businesslogic.ApplicationError;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ class UserRegistrationServiceImpl implements UserRegistrationService {
     public UserRegistrationResponse register(UserRegistrationRequest request) {
 
         // validate login and password
-        List<Error> validationErrors = validator.validate(request);
+        List<ApplicationError> validationErrors = validator.validate(request);
         if (!validationErrors.isEmpty()) {
-            return new UserRegistrationResponse(validationErrors);
+            throw new ApplicationException(validationErrors);
         }
 
         // create new user

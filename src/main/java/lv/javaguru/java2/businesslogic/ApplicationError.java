@@ -1,11 +1,11 @@
 package lv.javaguru.java2.businesslogic;
 
-public class Error {
+public class ApplicationError {
 
     private String field;
     private String description;
 
-    public Error(String field, String description) {
+    public ApplicationError(String field, String description) {
         this.field = field;
         this.description = description;
     }

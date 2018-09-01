@@ -4,7 +4,7 @@ import lv.javaguru.java2.database.ShoppingListRepository;
 import lv.javaguru.java2.database.UserRepository;
 import lv.javaguru.java2.domain.ShoppingList;
 import lv.javaguru.java2.domain.User;
-import lv.javaguru.java2.businesslogic.Error;
+import lv.javaguru.java2.businesslogic.ApplicationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +31,7 @@ class CreateShoppingListServiceImpl implements CreateShoppingListService {
         User user = userOpt.get();
 
         // validate
-        List<Error> validationErrors = validator.validate(user, request);
+        List<ApplicationError> validationErrors = validator.validate(user, request);
         if (!validationErrors.isEmpty()) {
             return new CreateShoppingListResponse(validationErrors);
         }
@@ -47,9 +47,9 @@ class CreateShoppingListServiceImpl implements CreateShoppingListService {
         return new CreateShoppingListResponse(shoppingList.getId());
     }
 
-    private List<Error> buildErrorListWithUserNotFoundError() {
-        Error error = new Error("userLogin", "Not found");
-        List<Error> errors = new ArrayList<>();
+    private List<ApplicationError> buildErrorListWithUserNotFoundError() {
+        ApplicationError error = new ApplicationError("userLogin", "Not found");
+        List<ApplicationError> errors = new ArrayList<>();
         errors.add(error);
         return errors;
     }

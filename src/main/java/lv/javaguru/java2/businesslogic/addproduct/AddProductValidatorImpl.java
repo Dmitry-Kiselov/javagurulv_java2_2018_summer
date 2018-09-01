@@ -2,7 +2,7 @@ package lv.javaguru.java2.businesslogic.addproduct;
 
 import lv.javaguru.java2.database.ProductRepository;
 import lv.javaguru.java2.domain.Product;
-import lv.javaguru.java2.businesslogic.Error;
+import lv.javaguru.java2.businesslogic.ApplicationError;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,35 +19,35 @@ public class AddProductValidatorImpl implements AddProductValidator {
     }
 
     @Override
-    public List<Error> validate(String title, String description) {
-        List<Error> errors = new ArrayList<>();
+    public List<ApplicationError> validate(String title, String description) {
+        List<ApplicationError> errors = new ArrayList<>();
         checkTitleNotBlankRule(title, errors);
         checkDescriptionNotBlank(description, errors);
         checkProductDuplicationRule(title, errors);
         return errors;
     }
 
-    private void checkProductDuplicationRule(String title, List<Error> errors) {
+    private void checkProductDuplicationRule(String title, List<ApplicationError> errors) {
         if (title != null && !title.isEmpty()) {
             Optional<Product> productOpt = database.getByTitle(title);
             if (productOpt.isPresent()) {
-                Error error = new Error("title", "duplicate not allowed");
+                ApplicationError error = new ApplicationError("title", "duplicate not allowed");
                 errors.add(error);
             }
         }
     }
 
-    private void checkDescriptionNotBlank(String description, List<Error> errors) {
+    private void checkDescriptionNotBlank(String description, List<ApplicationError> errors) {
         if (description == null || description.isEmpty()) {
-            Error error = new Error("description", "must not be empty");
+            ApplicationError error = new ApplicationError("description", "must not be empty");
             errors.add(error);
         }
     }
 
     private void checkTitleNotBlankRule(String title,
-                                        List<Error> errors) {
+                                        List<ApplicationError> errors) {
         if (title == null || title.isEmpty()) {
-            Error error = new Error("title", "must not be empty");
+            ApplicationError error = new ApplicationError("title", "must not be empty");
             errors.add(error);
         }
     }

@@ -1,4 +1,4 @@
-package lv.javaguru.java2.businesslogic.userregistration;
+package lv.javaguru.java2.businesslogic.user.registration;
 
 public class UserRegistrationRequest {
 

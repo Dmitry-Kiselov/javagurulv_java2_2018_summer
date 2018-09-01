@@ -1,6 +1,6 @@
 package lv.javaguru.java2.businesslogic.createshoppinglist;
 
-import lv.javaguru.java2.businesslogic.Error;
+import lv.javaguru.java2.businesslogic.ApplicationError;
 import java.util.List;
 
 public class CreateShoppingListResponse {
@@ -9,7 +9,7 @@ public class CreateShoppingListResponse {
 
     private boolean success;
 
-    private List<Error> errors;
+    private List<ApplicationError> errors;
 
     public CreateShoppingListResponse(Long shoppingListId) {
         this.shoppingListId = shoppingListId;
@@ -17,7 +17,7 @@ public class CreateShoppingListResponse {
         this.errors = null;
     }
 
-    public CreateShoppingListResponse(List<Error> errors) {
+    public CreateShoppingListResponse(List<ApplicationError> errors) {
         this.shoppingListId = null;
         this.success = false;
         this.errors = errors;
@@ -39,11 +39,11 @@ public class CreateShoppingListResponse {
         this.success = success;
     }
 
-    public List<Error> getErrors() {
+    public List<ApplicationError> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Error> errors) {
+    public void setErrors(List<ApplicationError> errors) {
         this.errors = errors;
     }
 

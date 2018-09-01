@@ -26,7 +26,7 @@ public class ProductValidatorImplTest {
 
     @Test
     public void shouldReturnErrorWhenTitleIsNull() {
-        List<Error> errors = validator.validate(null, "desc");
+        List<ApplicationError> errors = validator.validate(null, "desc");
 
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "title");
@@ -35,7 +35,7 @@ public class ProductValidatorImplTest {
 
     @Test
     public void shouldReturnErrorWhenTitleIsEmpty() {
-        List<Error> errors = validator.validate("", "desc");
+        List<ApplicationError> errors = validator.validate("", "desc");
 
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "title");
@@ -44,7 +44,7 @@ public class ProductValidatorImplTest {
 
     @Test
     public void shouldReturnErrorWhenDescriptionIsNull() {
-        List<Error> errors = validator.validate("title", null);
+        List<ApplicationError> errors = validator.validate("title", null);
 
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "description");
@@ -53,7 +53,7 @@ public class ProductValidatorImplTest {
 
     @Test
     public void shouldReturnErrorWhenDescriptionIsEmpty() {
-        List<Error> errors = validator.validate("title", "");
+        List<ApplicationError> errors = validator.validate("title", "");
 
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "description");
@@ -66,7 +66,7 @@ public class ProductValidatorImplTest {
         Mockito.when(database.getByTitle("title"))
                 .thenReturn(Optional.of(existingFromDb));
 
-        List<Error> errors = validator.validate("title", "dec");
+        List<ApplicationError> errors = validator.validate("title", "dec");
 
         assertEquals(errors.size(), 1);
         assertEquals(errors.get(0).getField(), "title");

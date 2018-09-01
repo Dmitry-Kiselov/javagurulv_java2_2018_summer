@@ -28,8 +28,8 @@ public class AddProductServiceTest {
 
     @Test
     public void shouldReturnFailedResponseWhenValidationErrorsExist() {
-        List<Error> errors = Collections.singletonList(
-                new Error("title", "must be not empty")
+        List<ApplicationError> errors = Collections.singletonList(
+                new ApplicationError("title", "must be not empty")
         );
         Mockito.when(validator.validate(null, "desc"))
                 .thenReturn(errors);
@@ -41,7 +41,7 @@ public class AddProductServiceTest {
 
     @Test
     public void shouldReturnSuccessWhenValidationErrorsNotExist() {
-        List<Error> errors = new ArrayList<>();
+        List<ApplicationError> errors = new ArrayList<>();
         Mockito.when(validator.validate("title", "desc"))
                 .thenReturn(errors);
 
