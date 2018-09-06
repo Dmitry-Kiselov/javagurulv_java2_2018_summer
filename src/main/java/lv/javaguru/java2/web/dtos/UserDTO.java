@@ -4,6 +4,7 @@ public class UserDTO {
 
     private Long id;
 
+    //@JsonProperty("user_login")
     private String login;
 
     private String password;

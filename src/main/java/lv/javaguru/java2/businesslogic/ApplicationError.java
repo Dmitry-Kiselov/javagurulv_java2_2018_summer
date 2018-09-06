@@ -5,6 +5,9 @@ public class ApplicationError {
     private String field;
     private String description;
 
+    public ApplicationError() {
+    }
+
     public ApplicationError(String field, String description) {
         this.field = field;
         this.description = description;
