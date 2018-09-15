@@ -3,11 +3,10 @@ package lv.javaguru.java2.web.config;
 import lv.javaguru.java2.config.SpringAppConfig;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
-public class SpringWebMvcInitializer extends AbstractDispatcherServletInitializer {
+public class SpringWebMvcInitializer /*extends AbstractDispatcherServletInitializer */ {
 
-    @Override
+    //@Override
     protected WebApplicationContext createRootApplicationContext() {
         AnnotationConfigWebApplicationContext applicationContext =
                 new AnnotationConfigWebApplicationContext();
@@ -15,7 +14,7 @@ public class SpringWebMvcInitializer extends AbstractDispatcherServletInitialize
         return applicationContext;
     }
 
-    @Override
+    //@Override
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext applicationContext =
                 new AnnotationConfigWebApplicationContext();
@@ -23,7 +22,7 @@ public class SpringWebMvcInitializer extends AbstractDispatcherServletInitialize
         return applicationContext;
     }
 
-    @Override
+    //@Override
     protected String[] getServletMappings() {
         return new String[]{"/"};
     }
